@@ -1,4 +1,4 @@
-import { SITES } from "./sites.js"
+import { SITES } from "./sites.js";
 
 function encodeChars(text) {
   return text.replace(/( |\+)/g, encodeURIComponent);
@@ -14,10 +14,10 @@ function handleRequest() {
       const [, ...rest] = split;
       const joined = rest.join(" ");
       const parsed = typeof site === "function" ? site(joined) : site;
-      window.location.href = parsed.replace("{q}", encodeChars(joined))
+      window.location.href = parsed.replace("{q}", encodeChars(joined));
     }
   }
-  window.location.href = engine.replace("{q}", encodeChars(query))
+  window.location.href = engine.replace("{q}", encodeChars(query));
 }
 
-export { handleRequest }
+export { handleRequest };

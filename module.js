@@ -1,3 +1,3 @@
-import { handleRequest } from "./functions.js"
+import { handleRequest } from "./functions.js";
 
-handleRequest()
+handleRequest();
