@@ -7,9 +7,9 @@ function handleRequest() {
   const url = new URL(window.location.href);
   const query = url.searchParams.get("q") ?? "";
   const engine = url.searchParams.get("engine") ?? SITES.duck;
-  if (query.startsWith("!")) {
+  if (query.startsWith(".")) {
     const split = query.split(" ");
-    const site = SITES[split[0].toLowerCase().replace("!", "")];
+    const site = SITES[split[0].toLowerCase().replace(".", "")];
     if (site) {
       const [, ...rest] = split;
       const joined = rest.join(" ");
