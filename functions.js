@@ -14,10 +14,12 @@ function handleRequest() {
       const [, ...rest] = split;
       const joined = rest.join(" ");
       const parsed = typeof site === "function" ? site(joined) : site;
-      window.location.href = parsed.replace("{q}", encodeChars(joined));
+      //window.location.href = parsed.replace("{q}", encodeChars(joined));
+      console.log(parsed.replace("{q}", encodeChars(joined)))
     }
   }
-  window.location.href = engine.replace("{q}", encodeChars(query));
+  //window.location.href = engine.replace("{q}", encodeChars(query));
+  console.log(engine.replace("{q}", encodeChars(query)))
 }
 
 export { handleRequest };
