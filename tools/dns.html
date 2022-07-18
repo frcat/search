@@ -55,7 +55,7 @@
         <script>
             document.addEventListener("DOMContentLoaded", function (e) {
                 document.getElementById("send-query").addEventListener("click", function (e) {
-                    const qname = document.getElementById("qname").value || new URLSearchParams(window.location.search).get("url") | window.location.host;
+                    const qname = document.getElementById("qname").value || window.location.host;
                     const qtype = document.getElementById("qtype").value || "A";
                     const method = document.getElementById("method").value || "POST";
                     const timeout = parseInt(document.getElementById("timeout").value) || 1000;
