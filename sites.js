@@ -2,7 +2,7 @@ var main = {
   amazon: "https://www.amazon.com/s?k={q}",
   cloudflare: "https://dash.cloudflare.com",
   discordjs: "https://discord.js.org/#/docs/main/stable/search?query={q}",
-  dns: "https://www.nslookup.io/dns-records/{q}",
+  dns: "https://search.smol.win/tools/dns",
   duckduckgo: "https://duckduckgo.com/?q={q}",
   gist: "https://gist.new",
   github: "https://github.com/search?q={q}",
