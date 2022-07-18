@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DNS</title>
+        <meta name="description" content="DNS over HTTPS" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script src="https://cdn.jsdelivr.net/npm/dohjs@latest/dist/doh.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css" />
+    </head>
+    <body>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Field name</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>
+                        <input type="text" id="url" value="https://cloudflare-dns.com/dns-query" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Query name</td>
+                    <td>
+                        <input type="text" id="qname" value="frcat.win" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Query type</td>
+                    <td>
+                        <input type="text" id="qtype" value="CNAME" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Request method</td>
+                    <td>
+                        <input type="text" id="method" value="GET" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Timeout (ms)</td>
+                    <td>
+                        <input type="number" id="timeout" value="1000" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" id="send-query" value="Send query" />
+        <pre><code id="output" class="language-javascript">
+</code>
+</pre>
+        <script>
+            document.addEventListener("DOMContentLoaded", function (e) {
+                document.getElementById("send-query").addEventListener("click", function (e) {
+                    const qname = document.getElementById("qname").value || new URLSearchParams(window.location.search).get("url") | window.location.host;
+                    const qtype = document.getElementById("qtype").value || "A";
+                    const method = document.getElementById("method").value || "POST";
+                    const timeout = parseInt(document.getElementById("timeout").value) || 1000;
+                    const url = document.getElementById("url").value;
+                    if (!url) {
+                        alert("You forgot to provide a URL!");
+                        return;
+                    }
+                    const resolver = new doh.DohResolver(url);
+                    resolver
+                        .query(qname, qtype, method, null, timeout)
+                        .then((response) => {
+                            document.getElementById("output").innerHTML = JSON.stringify(response, null, 4);
+                        })
+                        .catch(console.error);
+                });
+            });
+        </script>
+    </body>
+</html>
