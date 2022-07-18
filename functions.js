@@ -18,4 +18,4 @@ function handleRequest() {
   window.location.href = SITES.duck.replace("{q}", encodeChars(query));
 }
 
-export { handleRequest };
+handleRequest();
