@@ -4,9 +4,7 @@ function encodeChars(text) {
   return text.replace(/( |\+)/g, encodeURIComponent);
 }
 function handleRequest() {
-  const url = new URL(window.location.href);
-  const query = url.searchParams.get("q") ?? "";
-  const engine = url.searchParams.get("engine") ?? SITES.duck;
+  const query = new URLSearchParams(window.location.search).get("q") ?? "";
   if (query.startsWith("!")) {
     const split = query.split(" ");
     const site = SITES[split[0].toLowerCase().replace("!", "")];
@@ -18,8 +16,8 @@ function handleRequest() {
       console.log(parsed.replace("{q}", encodeChars(joined)))
     }
   }
-  //window.location.href = engine.replace("{q}", encodeChars(query));
-  console.log(engine.replace("{q}", encodeChars(query)))
+  //window.location.href = SITES.duck.replace("{q}", encodeChars(query));
+  console.log(SITES.duck.replace("{q}", encodeChars(query)))
 }
 
 export { handleRequest };
