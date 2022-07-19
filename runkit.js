@@ -59,10 +59,10 @@ function handleRequest(req, res) {
       const [, ...rest] = split;
       const joined = rest.join(" ");
       const parsed = typeof site === "function" ? site(joined) : site;
-      redir(res, window.location.href = parsed.replace("{q}", encodeChars(joined)));
+      redir(res, parsed.replace("{q}", encodeChars(joined)));
     }
   }
-  redir(res, SITES.duck.replace("{q}", encodeChars(query))  || "https://frcat.win")
+  redir(res, SITES.duck.replace("{q}", encodeChars(query)));
 }
 
 exports.endpoint = function(req, res) {
