@@ -1,3 +1,3 @@
-https://search.smol.win/?q=%s
+https://search.smol.win/?q=%s - slower | no limits
 
-https://french-cat.runkit.io/search/branches/master/?q=%s
+https://french-cat.runkit.io/search/branches/master/?q=%s - fastest | unknown limits
